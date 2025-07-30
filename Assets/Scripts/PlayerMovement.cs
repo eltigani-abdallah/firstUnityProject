@@ -49,14 +49,20 @@ public class PlayerMovement : MonoBehaviour
                 rb.AddForce(moveForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
             }
 
-            if (Input.GetKey("space"))
+            /*if (Input.GetKey("space"))
             {
                 rb.AddForce(0, jumpForce * Time.deltaTime, 0, ForceMode.VelocityChange);
-            }
+            }*/
 
             if (Input.GetKey("s"))
             {
                 rb.AddForce(0, 0, -moveForce * Time.deltaTime, ForceMode.VelocityChange);
+            }
+
+            if (rb.position.y < 0)
+            {
+                allowMovement = false;
+                FindAnyObjectByType<GameManager>().gameOver();
             }
         }
         
