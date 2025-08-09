@@ -19,8 +19,12 @@ public class GameManager : MonoBehaviour
 
     void restartGame()
     {
-        endScreen.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void toCredits()
+    {
+        SceneManager.LoadScene("Credits");
     }
 
     public void gameOver()
@@ -37,11 +41,7 @@ public class GameManager : MonoBehaviour
 
             endScreen.SetActive(true);
             
-
-            //Debug.Log("GAME OVER");
-            //rb.AddForce(0, 1000, 0);
-
-            Invoke("restartGame", restartDelay);
+            Invoke("toCredits", restartDelay);
         }
 
     }
@@ -61,11 +61,9 @@ public class GameManager : MonoBehaviour
             endScreen.SetActive(true);
             
 
-            //Debug.Log("Victory!!!!");
-            /*rb.AddForce(0, 2000, 0);
-            rb.AddTorque(0, 0, 1000);*/
+          
 
-            Invoke("restartGame", restartDelay);
+            Invoke("toCredits", restartDelay);
         }
     }
 }
